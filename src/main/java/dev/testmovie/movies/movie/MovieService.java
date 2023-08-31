@@ -59,4 +59,15 @@ public class MovieService {
 
         return movie;
     }
+
+    public Movie deleteMovieById(ObjectId id) {
+        Optional<Movie> optionalMovie = this.movieRepo.findById(id);
+
+        if(optionalMovie.isEmpty()) {
+            return null;
+        }
+
+        this.movieRepo.deleteById(id);
+        return optionalMovie.get();
+    }
 }

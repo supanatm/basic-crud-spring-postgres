@@ -42,4 +42,9 @@ public class MovieController {
                 payload.get("poster")),
                 HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Movie> deleteMovie(@PathVariable("id") ObjectId id) {
+        return new ResponseEntity<Movie>(this.movieService.deleteMovieById(id), HttpStatus.OK);
+    }
 }
